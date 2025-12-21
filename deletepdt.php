@@ -1,0 +1,27 @@
+<?php
+
+include_once 'connection.php';
+
+if(!isset($_GET['pid']))
+{
+    echo "Missing Fields";
+    die;
+}
+
+$pid=$_GET['pid'];
+
+$sql_status=mysqli_query($conn,"delete from products where pid=$pid");
+
+if($sql_status)
+{
+    header('location:view_products.php');
+}
+else
+{
+    //header('location:error.php?msg='Sql error'');
+    echo "Sql query failed";
+}
+
+
+
+?>
